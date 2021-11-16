@@ -1,0 +1,5 @@
+ProductList{
+[Product{Id='11', name='name1', price='111', description='description'}
+, Product{Id='22', name='name2', price='222', description='description'}
+, Product{Id='33', name='name3', price='333', description='description'}
+]

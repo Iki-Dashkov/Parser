@@ -1,10 +1,10 @@
 public class Product {
     String Id;
     String name;
-    String price;
+    int price;
     String description;
 
-    public Product(String id,  String name, String price, String description) {
+    public Product(String id,  String name, int price, String description) {
         Id = id;
         this.name = name;
         this.price = price;
@@ -27,11 +27,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -50,6 +50,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", description='" + description + '\'' +
-                '}';
+                '}'+ System.lineSeparator();
     }
 }
