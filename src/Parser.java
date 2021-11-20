@@ -18,6 +18,12 @@ public class Parser {
         document = Jsoup.connect(url).get();
     }
 
+    public void getCategory(){
+        // #categories .sub-menu-item .sub-menu-link
+        Elements category = document.select("#categories");
+        System.out.println(category.toString());
+    }
+
     public void getData(String containerValue,String nameValue,String priceValue, String descriptionValue) {
         //ArrayList<Product> products =new ArrayList<>();
         Element body = document.body();

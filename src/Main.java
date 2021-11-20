@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 
 public class Main {
@@ -20,12 +21,11 @@ public class Main {
         list.add(product2);
         list.add(product3);
 
-        System.out.println(list.toString());
-        System.out.println(list.getSize());
-
-        FileLoader fileLoader = new FileLoader();
-        fileLoader.writeProductList(list);
-        fileLoader.start();
+        //save to JSON file -> text.json
+        FileLoader.saveToJSONFile(list, new File("text.json"));
+        //get data from JSON file: text.json ->listFromJSON
+        ProductList listFromJSON = FileLoader.loadFromJSONFile(new File("text.json"));
+        System.out.println(listFromJSON.toString());
 
     }
 }
