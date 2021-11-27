@@ -4,6 +4,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.*;
 
 public class Parser {
     Document document;
@@ -12,6 +13,7 @@ public class Parser {
     Elements price;
     Elements id;
     Elements description;
+    List<String> list = new ArrayList<>();;
 
 
     public Parser(String url) throws IOException {
@@ -19,13 +21,23 @@ public class Parser {
     }
 
     public void getCategory(){
-        // #categories .sub-menu-item .sub-menu-link
-        Elements category = document.select("#categories");
-        System.out.println(category.toString());
+        Element body = document.body();
+        Elements categoryContainer = body.getElementsByClass("f-subrubric__container");
+        Elements categoryTitle = categoryContainer.select("f-subrubric__title");
+        Elements categoryLinks = categoryContainer.select("a[class=f-subrubric__subcategories-link]");
+        // ???
+        for (Element link : categoryLinks) {
+            list.add(link.attr("abs:href"));
+        }
+        System.out.println(list.toString());
+
     }
 
-    public void getData(String containerValue,String nameValue,String priceValue, String descriptionValue) {
+    public void getData(String containerValue,String nameValue,String priceValue, String descriptionValue) throws IOException {
         //ArrayList<Product> products =new ArrayList<>();
+        for (String link : list) {
+            document = Jsoup.connect(link).get();
+        }
         Element body = document.body();
         container = body.getElementsByClass(containerValue);
         name = container.select(nameValue);
@@ -40,7 +52,7 @@ public class Parser {
         }
          */
 
-        //System.out.println(products.toString());
+        System.out.println(name.text());
 
     }
 
